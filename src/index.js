@@ -31,6 +31,9 @@ const radius = {
     min: Number(10000).toFixed(1),
     max: Number(100000).toFixed(1),
 }
+
+
+window.mouseShader =  new THREE.Vector2(0,0);
 window.dist = radius.min;
 function changeValue(val) {
     TweenLite.to(window, 0.5, {dist: val});
@@ -39,7 +42,7 @@ const changeValueDeb = debounce(changeValue, 500);
 const imageShader = new THREE.ShaderMaterial({
     uniforms: {
         resolution: { value: new THREE.Vector2(INNER_WIDTH, INNER_HEIGHT) },
-        u_mouse: { value:  new THREE.Vector2(0, 0)},
+        u_mouse: { value:  new THREE.Vector2(10, 10)},
         texture: {type: 't', value: tex},
         texture1: {type: 't', value: tex1},
         light: {type:'v3', value:new THREE.Vector3()},
