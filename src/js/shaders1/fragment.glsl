@@ -1,5 +1,6 @@
 uniform sampler2D texture;
 uniform sampler2D texture1;
+uniform sampler2D texture2;
 uniform float offset1;
 uniform float offset2;
 uniform vec2 channelOffsets[4];
@@ -29,6 +30,7 @@ void main() {
 
     float point = pow(pow((gl_FragCoord.x) - u_mouse.x, 2.0) + pow((gl_FragCoord.y) - u_mouse.y, 2.0), 2.0);
     vec4 color = texture2D(texture,pixel);
+    vec4 color2 = texture2D(texture2,pixel);
     vec4 color1 = texture2D(texture1,pixel);
     if (point <= pow(correctDistance,2.0)) {
         gl_FragColor = color1;

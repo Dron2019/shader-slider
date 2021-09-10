@@ -26,6 +26,7 @@ THREE.ImageUtils.crossOrigin = '';// Позволяет загружать вн�
 var tex = THREE.ImageUtils.loadTexture( "./img/KP_VIEW_4_FINAL.jpg" );
 // var tex1 = THREE.ImageUtils.loadTexture( "./img/KP_VIEW_4_FINAL.jpg" );
 var tex1 = THREE.ImageUtils.loadTexture( "./img/KP_VIEW_1_FINAL.jpg" );
+var tex2 = THREE.ImageUtils.loadTexture( "./img/smoke.png" );
 
 const radius = {
     min: Number(10000).toFixed(1),
@@ -45,6 +46,8 @@ const imageShader = new THREE.ShaderMaterial({
         u_mouse: { value:  new THREE.Vector2(10, 10)},
         texture: {type: 't', value: tex},
         texture1: {type: 't', value: tex1},
+        texture2: {type: 't', value: tex2},
+
         light: {type:'v3', value:new THREE.Vector3()},
         dist: { value: radius.min },
         offset1: { value: 0.01 },
