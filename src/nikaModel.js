@@ -10,7 +10,7 @@ const container = document.querySelector('#nikaModel');
 const scene = new THREE.Scene();
 
 // Set the background color
-scene.background = new THREE.Color('skyblue');
+scene.background = new THREE.Color('transparent');
 
 // Create a camera
 const fov = 35; // AKA Field of View
@@ -29,10 +29,23 @@ const geometry = new THREE.BoxGeometry(2, 2, 2);
 
 // create a default (white) Basic material
 const material = new THREE.MeshBasicMaterial({
-    color: 0x00ff00,
+    color: 0xffffff,
     wireframe: true
 });
+// const ambientLight = new THREE.AmbientLight( 0xffffff );
+// 			scene.add( ambientLight );
 
+            const light1 = new THREE.PointLight( 0xffffff, 0.5, 0 );
+			light1.position.set( 0, 50, 0 );
+			scene.add( light1 );
+
+			const light2 = new THREE.PointLight( 0xffffff, 0.5, 0 );
+			light2.position.set( 50, 75, 50 );
+			scene.add( light2 );
+
+			const light3 = new THREE.PointLight( 0xffffff, 0.5, 0 );
+			light3.position.set( - 25, - 50, - 25 );
+			scene.add( light3 );
 // create a Mesh containing the geometry and material
 // const cube = new THREE.Mesh(geometry, material);
 
@@ -40,7 +53,7 @@ const material = new THREE.MeshBasicMaterial({
 // scene.add(cube);
 
 // create the renderer
-const renderer = new THREE.WebGLRenderer({ alpha: true });
+const renderer = new THREE.WebGLRenderer({ alpha: false });
 
 // next, set the renderer to the same size as our container element
 renderer.setSize(container.clientWidth, container.clientHeight);
@@ -76,27 +89,30 @@ function render() {
     renderer.render( scene, camera );
 }
 var loader = new OBJLoader();
-loader.load('./ImageToStl.com_type005.obj', function(object){
-    object.traverse( function ( child ) {
 
-        if ( child instanceof THREE.Mesh ) {
-            console.log('instanceoff');
-            // child.material.color.setHex( '0xff0000' );
-
-        }
-
-    } );
-    // OBJBoundingBox.center(object.position);
-    object.position.multiplyScalar(-1);
-    // object.position.x = -0.1;
-    // object.position.y = 0;
-    // object.position.z = -4;
-    scene.add( object );
-    console.log(object);
-    controls.target = getCenterPoint(object.children[0]);
-    controls.update();
-});
-
+function load(src = './ImageToStl.com_у007.obj') {
+    loader.load(src, function(object){
+        object.traverse( function ( child ) {
+    
+            if ( child instanceof THREE.Mesh ) {
+                console.log('instanceoff');
+                child.material.color.setHex('0x98ff98');
+    
+            }
+    
+        } );
+        // OBJBoundingBox.center(object.position);
+        // object.position.multiplyScalar(-1);
+        // object.position.x = -0.1;
+        // object.position.y = 0;
+        // object.position.z = -4;
+        scene.add( object );
+        console.log(object);
+        controls.target = getCenterPoint(object.children[0]);
+        controls.update();
+    });
+}
+load();
 function getCenterPoint(mesh) {
     var middle = new THREE.Vector3();
     var geometry = mesh.geometry;
@@ -112,4 +128,7 @@ function getCenterPoint(mesh) {
 }
 
 window.camera = camera;
+window.scene = scene;
+window.laodObj = load;
+
 
