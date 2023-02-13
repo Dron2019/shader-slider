@@ -8,14 +8,32 @@
   </head>
   <body>
     <h1>3D</h1>
-    <div id="world"></div>
+    <div id="nikaModel"></div>
+    <!-- <canvas id="cripta-canvas"></canvas>
+    
+    <div id="world"></div> -->
 
     <style>
+      * {
+        box-sizing: border-box;
+      }
       html {
-        height: 1000vh;
+        /* height: 1000vh; */
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #cripta-canvas {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 50% !important;
+        height: auto !important;
+        /* transform: translateX(50%); */
       }
       #world {
-  position: fixed;
+  /* position: fixed; */
   left: 0;
   top: 0;
   width: 100%;
@@ -24,9 +42,26 @@
   background: linear-gradient(#e4e0ba, #f7d9aa);
 }
 canvas {
-  cursor: none;
+  /* cursor: none; */
+  width: 100%;
+  height: 100%;
+}
+[id="nikaModel"] {
+  width: 100vw;
+  height: 100vh;
+}
+img {
+
+  display: block;
+  /* width: 100px;
+  height: 100px; */
 }
     </style>
-    <script src="build.js"></script>
+    <!-- <script src="build.js"></script> -->
+    <!-- <img src="./img/robot_banner.jpg"> -->
+    <!-- <script src="cripta.build.js"></script> -->
+    <script src="http://threejs.org/build/three.min.js"></script>
+		<script src="http://threejs.org/examples/js/loaders/OBJLoader.js"></script>
+    <script src="nikaModel.build.js"></script>
   </body>
 </html>

@@ -27,7 +27,7 @@
   "dependencies": {
     "gsap": "^3.7.0",
     "image-webpack-loader": "^7.0.1",
-    "three": "^0.130.0",
+    "three": "^0.130.1",
     "three.js": "^0.77.1",
     "webpack-dev-server": "^3.11.2"
   }

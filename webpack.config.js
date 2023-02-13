@@ -1,9 +1,13 @@
 const path = require('path');
 module.exports = {
 mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    cripta: './src/cripta.js',
+    nikaModel: './src/nikaModel.js'
+  },
   output: {
-    filename: 'build.js',
+    filename: '[name].build.js',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
